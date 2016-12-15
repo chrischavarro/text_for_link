@@ -1,0 +1,2 @@
+class ShortUrlLog < ApplicationRecord
+end

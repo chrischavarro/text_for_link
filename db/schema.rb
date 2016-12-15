@@ -10,10 +10,56 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161215014934) do
+ActiveRecord::Schema.define(version: 20161215022304) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "campaign_tags", force: :cascade do |t|
+    t.integer  "tag_id"
+    t.integer  "campaign_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "campaigns", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "campaign_phone"
+    t.string   "campaign_keyword"
+    t.string   "destination_url"
+    t.string   "campaign_description"
+    t.boolean  "active"
+    t.time     "start_time"
+    t.time     "end_time"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
+
+  create_table "short_url_logs", force: :cascade do |t|
+    t.integer  "short_url_id"
+    t.integer  "ip_address"
+    t.string   "utm_campaign"
+    t.string   "utm_medium"
+    t.string   "utm_source"
+    t.string   "utm_term"
+    t.string   "utm_content"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  create_table "short_urls", force: :cascade do |t|
+    t.integer  "campaign_id"
+    t.string   "short_url"
+    t.string   "destination_url"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.integer  "tag_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -28,8 +74,22 @@ ActiveRecord::Schema.define(version: 20161215014934) do
     t.inet     "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "company"
+    t.string   "phone"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+  end
+
+  create_table "visitors", force: :cascade do |t|
+    t.string   "phone"
+    t.string   "email"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.boolean  "subscribe"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end

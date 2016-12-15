@@ -1,0 +1,2 @@
+class CampaignTag < ApplicationRecord
+end
