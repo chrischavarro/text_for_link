@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161215022304) do
+ActiveRecord::Schema.define(version: 20161217185749) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 20161215022304) do
 
   create_table "campaigns", force: :cascade do |t|
     t.integer  "user_id"
-    t.integer  "campaign_phone"
+    t.string   "campaign_phone"
     t.string   "campaign_keyword"
     t.string   "destination_url"
     t.string   "campaign_description"
