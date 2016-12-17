@@ -17,7 +17,21 @@ Your profile:
 <div>
 <% if current_user.campaigns %>
 	<b>Your campaigns:</b>
-
+	<% current_user.campaigns.each do |campaign| %>
+		<div class="user_campaign">
+			<ul>
+				<li><b>User ID:</b> <%= campaign.user_id  %></li>
+				<li><b>Campaign Phone Number:</b> <%= campaign.campaign_phone  %></li>
+				<li><b>Campaign Keyword:</b> <%= campaign.campaign_keyword  %></li>
+				<li><b>Destination URL:</b> <%= campaign.destination_url  %></li>
+				<li><b>Created at:</b> <%= campaign.created_at  %></li>
+				<li><b>Campaign Description:</b> <%= campaign.campaign_description  %></li>
+				<li><b>Active?:</b> <%= campaign.active  %></li>
+				<li><b>Start Time:</b> <%= campaign.start_time  %></li>
+				<li><b>End Time:</b> <%= campaign.end_time  %></li>
+			</ul>
+		</div>
+	<% end %>
 <% end %>
 
 <br>
