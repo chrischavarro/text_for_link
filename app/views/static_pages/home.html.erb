@@ -17,10 +17,11 @@ Your profile:
 <div>
 <% if current_user.campaigns %>
 	<b>Your campaigns:</b>
-	<% current_user.campaigns.each do |campaign| %>
+	<% @campaigns.each do |campaign| %>
 		<div class="user_campaign">
 			<ul>
 				<li><b>User ID:</b> <%= campaign.user_id  %></li>
+				<li><b>Campaign ID:</b> <%= campaign.id  %></li>
 				<li><b>Campaign Phone Number:</b> <%= campaign.campaign_phone  %></li>
 				<li><b>Campaign Keyword:</b> <%= campaign.campaign_keyword  %></li>
 				<li><b>Destination URL:</b> <%= campaign.destination_url  %></li>
@@ -29,6 +30,7 @@ Your profile:
 				<li><b>Active?:</b> <%= campaign.active  %></li>
 				<li><b>Start Time:</b> <%= campaign.start_time  %></li>
 				<li><b>End Time:</b> <%= campaign.end_time  %></li>
+				<li><%= link_to 'Edit Campaign', edit_campaign_path(campaign.id) %></li>
 			</ul>
 		</div>
 	<% end %>

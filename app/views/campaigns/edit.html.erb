@@ -1,0 +1,41 @@
+<h2>Edit your campaign</h2>
+
+<h2>Create a new campaign</h2>
+<%= form_for @campaign do |f| %>
+  <div class="field">
+    <%= f.label :campaign_phone %><br />
+    <%= f.text_field :campaign_phone, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :campaign_keyword %><br />
+    <%= f.text_field :campaign_keyword %>
+  </div>  
+
+  <div class="field">
+    <%= f.label :destination_url %><br />
+    <%= f.text_field :destination_url %>
+  </div>  
+
+  <div class="field">
+    <%= f.label :campaign_description %><br />
+    <%= f.text_field :campaign_description %>
+  </div>  
+
+  <div class="field">
+    <%= f.label :active %><br />
+    <%= f.check_box :active %>
+  </div>    
+
+  <div class="field">
+    <%= f.label :start_time %><br />
+    <%= f.datetime_field :start_time %>
+  </div>  
+
+<div class="field">
+    <%= f.label :end_time %><br />
+    <%= f.datetime_field :end_time %>
+  </div>  
+	
+	<%= f.submit 'Change Campaign', :class => 'btn btn-default btn-block' %>
+<% end %>
