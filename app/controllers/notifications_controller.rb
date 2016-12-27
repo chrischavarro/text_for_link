@@ -7,9 +7,11 @@ class NotificationsController < ApplicationController
   	account_auth_token = '7f228d90fb8c958b022dddefc65c1919'
 
     client = Twilio::REST::Client.new account_sid, account_auth_token
-  	message = client.messages.create from: '+13053631650', to: '+17865645859', body: 'Learning to send SMS you are.', media_url: 'http://linode.rabasa.com/yoda.gif'
+  	message = client.messages.create from: '+13053631650', to: '+17865645859', body: 'Learning to send SMS you are.', media_url: 'http://linode.rabasa.com/yoda.gif', status_callback: request.base_url + '/twilio/status'
+
 
   	render plain: message.status
   end
+
  
 end
